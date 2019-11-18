@@ -606,7 +606,13 @@ _:-ms-lang(x),
 /* ========================================================================
      Component: top-navbar
  ========================================================================== */
-.topnavbar {
+ #fleetnavbar{
+  background-color: #4d23e5;
+  background-image: linear-gradient(to right, #511e8b 0%, #5c3a83 100%);
+  background-repeat: repeat-x;
+ }
+
+ .topnavbar {
   -webkit-backface-visibility: hidden;
   /* fixes chrome jump */
   margin-bottom: 0;

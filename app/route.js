@@ -40,7 +40,7 @@ var routingParameters = {
   // The start point of the route:
   waypoint0: "geo!34.0403207,-118.2717511",
   // The end point of the route:
-  waypoint1: "geo!34.0597,-118.3009",
+  waypoint1: "geo!34.0211,-118.3965",
   // To retrieve the shape of the route we choose the route
   // representation mode 'display'
   representation: "display"
@@ -128,3 +128,5 @@ var router = platform.getRoutingService();
 router.calculateRoute(routingParameters, onResult, function(error) {
   alert(error.message);
 });
+
+map.addLayer(defaultLayers.vector.normal.traffic);
