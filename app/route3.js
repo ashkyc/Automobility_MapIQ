@@ -18,14 +18,14 @@ var platform = new H.service.Platform({
   apikey: "mwdeRgol51c1qnfPdN9nxBFTf1gKeTtM_K2dp2w_Aik"
 });
 // Retrieve the target element for the map:
-var targetElement = document.getElementById("mapContainer");
+var targetElement = document.getElementById("map1");
 
 // Get the default map types from the platform object:
 var defaultLayers = platform.createDefaultLayers();
 
 // Instantiate the map:
-var map = new H.Map(
-  document.getElementById("mapContainer"),
+var map1 = new H.Map(
+  document.getElementById("map1"),
   defaultLayers.vector.normal.map,
   {
     zoom: 6,
@@ -40,9 +40,30 @@ var routingParameters = {
   // The start point of the route:
   waypoint0: "geo!34.0403207,-118.2717511",
   // The end point of the route:
-  waypoint1: "geo!34.0211,-118.3965",
+  waypoint1: "geo!34.1367,-118.6615",
   // To retrieve the shape of the route we choose the route
   // representation mode 'display'
+  representation: "display"
+};
+
+var routingParameters2 = {
+  mode: "fastest;car",
+  waypoint0: "geo!34.0782,-118.2606",
+  waypoint1: "geo!33.8366,-117.9143",
+  representation: "display"
+};
+
+var routingParameters3 = {
+  mode: "fastest;car",
+  waypoint0: "geo!34.0403207,-118.2717511",
+  waypoint1: "geo!34.1808,-118.3090",
+  representation: "display"
+};
+
+var routingParameters4 = {
+  mode: "fastest;car",
+  waypoint0: "geo!34.0403207,-118.2717511",
+  waypoint1: "geo!33.9806,-117.3755",
   representation: "display"
 };
 
@@ -87,27 +108,25 @@ var onResult = function(result) {
 
     var routeOutline = new H.map.Polyline(linestring, {
       style: {
-        lineWidth: 5,
-        strokeColor: "rgba(0, 128, 255, 0.7)",
-        lineTailCap: "arrow-tail",
-        lineHeadCap: "arrow-head"
+        lineWidth: 3,
+        strokeColor: "purple"
       }
     });
     // Create a patterned polyline:
-    var routeArrows = new H.map.Polyline(linestring, {
-      style: {
-        lineWidth: 5,
-        fillColor: "white",
-        strokeColor: "rgba(255, 255, 255, 1)",
-        lineDash: [0, 2],
-        lineTailCap: "arrow-tail",
-        lineHeadCap: "arrow-head"
-      }
-    });
+    // var routeArrows = new H.map.Polyline(linestring, {
+    //   style: {
+    //     lineWidth: 10,
+    //     fillColor: "white",
+    //     strokeColor: "rgba(255, 255, 255, 1)",
+    //     lineDash: [0, 2],
+    //     lineTailCap: "arrow-tail",
+    //     lineHeadCap: "arrow-head"
+    //   }
+    // });
     // create a group that represents the route line and contains
     // outline and the pattern
     var routeLine = new H.map.Group();
-    routeLine.addObjects([routeOutline, routeArrows]);
+    routeLine.addObjects([routeOutline]);
 
     // Add the route polyline and the two markers to the map:
     map.addObjects([routeLine, startMarker, endMarker]);
